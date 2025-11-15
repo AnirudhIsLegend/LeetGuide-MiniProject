@@ -1,0 +1,170 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  width: 350px;
+  min-height: 300px;
+  padding: 20px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Popup Container */
+.api-key-popup {
+  background: #000000;
+  width: 100%;
+  padding: 30px 25px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 245, 255, 0.3),
+              0 0 60px rgba(255, 0, 255, 0.2),
+              0 0 80px rgba(255, 20, 147, 0.15);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Neon Border Effect */
+.api-key-popup::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 12px;
+  padding: 3px;
+  background: linear-gradient(135deg, 
+    #00f5ff 0%,
+    #ffffff 25%,
+    #5148f9 50%,
+    #150fac 75%,
+    #0515f7 100%);
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: neonBorderGlow 3s ease infinite;
+  z-index: -1;
+}
+
+@keyframes neonBorderGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Title - White text */
+.popup-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* GEMINI text with Google Logo Gradient */
+.popup-title .gemini-gradient {
+  background: linear-gradient(90deg,
+    #4285F4 0%,
+    #4285F4 25%,
+    #EA4335 25%,
+    #EA4335 50%,
+    #FBBC05 50%,
+    #FBBC05 75%,
+    #34A853 75%,
+    #34A853 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 100% 100%;
+}
+
+/* Input Field */
+#apiKey {
+  width: 100%;
+  padding: 12px 16px;
+  background: #ffffff;
+  color: #000000;
+  border: linear-gradient(135deg, #00f5ff 0%, #a855f7 100%);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+#apiKey::placeholder {
+  color: #666666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#apiKey:focus {
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2),
+              0 0 15px rgba(0, 245, 255, 0.3);
+}
+
+/* Save Button */
+#saveKey {
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #00f5ff 0%, #a855f7 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 245, 255, 0.4);
+}
+
+#saveKey:hover {
+  background: linear-gradient(135deg, #00d4e8 0%, #9333ea 100%);
+  box-shadow: 0 6px 20px rgba(0, 245, 255, 0.6),
+              0 0 30px rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+#saveKey:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 245, 255, 0.4);
+}
+
+/* Status Message */
+#status {
+  margin-top: 8px;
+  font-size: 13px;
+  text-align: center;
+  color: #ffffff;
+  min-height: 20px;
+  padding: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#status.success {
+  color: #34A853;
+  background: rgba(52, 168, 83, 0.1);
+}
+
+#status.error {
+  color: #EA4335;
+  background: rgba(234, 67, 53, 0.1);
+}

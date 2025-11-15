@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "LeetGuide",
+  "version": "1.0",
+  "description": "Get hints and guidance for LeetCode problems using Gemini AI.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://leetcode.com/*"],
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "LeetGuide"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/chatbot.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
